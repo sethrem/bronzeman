@@ -15,7 +15,7 @@ Features:
 Setup guide:
   1. Build RuneLite with your IDE of preference (reccommend IntelliJ) https://github.com/runelite/runelite/wiki/Building-with-IntelliJ-IDEA
   2. Download this repo and extract the bronzeman folder into your 'runelite-client/src/main/java/net/runelite/client/plugins/' a.k.a.
-     '/net/runelite/client/plugins/' folder
+     '/net/runelite/client/plugins/' folder *End Result* https://prnt.sc/mp8zjv
   3. Compile RuneLite (If you're using an IDE you just have to run the main RuneLite Class found in 'net.runelite.client.RuneLite.java')
   4. Paste the 'item-unlocked.png' into the 'runelite-client/main/resources/' folder. http://prntscr.com/mp6doo
   4. Enable the plugin on RuneLite's plugin sidebar.
