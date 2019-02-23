@@ -16,5 +16,6 @@ Setup guide:
   1. Build RuneLite with your IDE of preference (reccommend IntelliJ) https://github.com/runelite/runelite/wiki/Building-with-IntelliJ-IDEA
   2. Download this repo and extract the bronzeman folder into your net.runelite.client.plugins/ folder
   3. Compile RuneLite
+  4. Paste the 'item-unlocked.png' into the 'runelite-client/main/resources/' folder. http://prntscr.com/mp6doo
   4. Enable the plugin on RuneLite's plugin sidebar.
   5. Start your Bronze-Man Mode Adventure!!!!
