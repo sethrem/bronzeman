@@ -1,5 +1,6 @@
 package net.runelite.client.plugins.bronzeman;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
 import net.runelite.api.events.GameStateChanged;
@@ -15,11 +16,13 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.PrintWriter;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,9 +52,13 @@ public class BronzemanPlugin extends Plugin {
 
     private List<Integer> unlockedItems;
 
+    @Getter
+    private BufferedImage unlockImage = null;
+
     @Override
     protected void startUp() throws Exception {
         super.startUp();
+        loadUnlockImage();
         unlockedItems = new ArrayList<>();
         overlayManager.add(bronzemanOverlay);
     }
@@ -137,7 +144,6 @@ public class BronzemanPlugin extends Plugin {
     /** Saves players unlocks to a .txt file every time they unlock a new item **/
     private void savePlayerUnlocks() {
         try {
-            System.out.println("Username:" + client.getUsername());
             File playerFolder = new File(RuneLite.PROFILES_DIR, client.getUsername());
             File playerFile = new File(playerFolder, "bronzeman-unlocks.txt");
             PrintWriter w = new PrintWriter(playerFile);
@@ -170,6 +176,20 @@ public class BronzemanPlugin extends Plugin {
                 }
                 r.close();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /** Downloads the item-unlock png file to display unlocks **/
+    private void loadUnlockImage() {
+        try {
+            File imageFile = new File(RuneLite.RUNELITE_DIR, "item-unlocked.png");
+            if (!imageFile.exists()) {
+                InputStream in = new URL("https://i.imgur.com/KWVNlsq.png").openStream();
+                Files.copy(in, Paths.get(imageFile.getPath()));
+            }
+            unlockImage = ImageIO.read(imageFile);
         } catch (Exception e) {
             e.printStackTrace();
         }

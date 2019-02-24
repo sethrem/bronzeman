@@ -4,19 +4,15 @@ import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.overlay.Overlay;
-import net.runelite.client.ui.overlay.OverlayMenuEntry;
 import net.runelite.client.ui.overlay.OverlayPosition;
 
-import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import static net.runelite.api.MenuAction.RUNELITE_OVERLAY_CONFIG;
-import static net.runelite.client.ui.overlay.OverlayManager.OPTION_CONFIGURE;
+
 
 /**
  *
@@ -40,6 +36,7 @@ public class BronzeManOverlay extends Overlay {
         this.client = client;
         this.plugin = plugin;
         this.itemUnlockList = new CopyOnWriteArrayList<>();
+        setPosition(OverlayPosition.TOP_CENTER);
     }
 
     public void addItemUnlock(int itemId) {
@@ -66,7 +63,7 @@ public class BronzeManOverlay extends Overlay {
 
         int drawY = currentUnlock.getLocationY();
         // Drawing unlock pop-up in a static location because this is how the game-mode is.
-        graphics.drawImage(unlockImage(),-62, drawY, null);
+        graphics.drawImage(plugin.getUnlockImage(),-62, drawY, null);
         graphics.drawImage(getImage(currentUnlock.getItemId()),-50, drawY + 7, null);
         if (drawY < 10) {
             currentUnlock.setLocationY(drawY + 1);
@@ -76,18 +73,6 @@ public class BronzeManOverlay extends Overlay {
             currentUnlock = null;
         }
         return null;
-    }
-
-    private BufferedImage unlockImage = null;
-    private BufferedImage unlockImage() {
-        if (unlockImage == null) {
-            try {
-               unlockImage = ImageIO.read(getClass().getResourceAsStream("/item-unlocked.png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return unlockImage;
     }
 
     private BufferedImage getImage(int itemID) {
