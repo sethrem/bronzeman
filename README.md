@@ -19,6 +19,6 @@ Setup guide:
   2. Download this repo and extract the bronzeman folder into your 'runelite-client/src/main/java/net/runelite/client/plugins/' a.k.a.
      '/net/runelite/client/plugins/' folder. It should now look like this: https://prnt.sc/mp8zjv
   3. Compile RuneLite (If you're using an IDE you just have to run the main RuneLite Class found in 'net.runelite.client.RuneLite.java')
-  4. Paste the 'item-unlocked.png' into the 'runelite-client/main/resources/' folder. http://prntscr.com/mp6doo
+  4. ~~Paste the 'item-unlocked.png' into the 'runelite-client/main/resources/' folder. http://prntscr.com/mp6doo~~
   4. Enable the plugin on RuneLite's plugin sidebar.
   5. Start your Bronze-Man Mode Adventure!!!!
