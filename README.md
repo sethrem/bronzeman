@@ -2,6 +2,8 @@
 BronzeMan-Mode Plugin for Rune-lite created by Sethrem. Recreation of GUDI's (Ronan's) bronze-man rune-lite plugin for general public release.
 Original creator and inspiration for this plugin: https://www.youtube.com/watch?v=GFNfa2saOJg
 
+IMPORTANT: Setting up Rune-Lite using version control (e.g. git) you can keep your built rune-lite source up to date by pulling from up-stream and it will not remove the bronzeman-mode plugin.
+
 NOTE:
  1. WHEN THE PLUGIN IS ENABLED ALL ITEMS IN YOUR INVENTORY/EQUIPMENT AND BANK WILL BE "UNLOCKED".
     a. To prevent this from occuring it is reccommended you either start a new lvl-3 account or clear your inventory/equipment and bank before  
