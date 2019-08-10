@@ -84,6 +84,7 @@ public class BronzemanPlugin extends Plugin {
         for (Item i : e.getItemContainer().getItems()) {
             if (i == null) continue;
             if (i.getId() <= 1) continue;
+            if (i.getQuantity() <= 0) continue;    
             if (!unlockedItems.contains(i.getId())) {
                 queueItemUnlock(i.getId());
             }
