@@ -7,6 +7,7 @@ import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.WidgetLoaded;
+import net.runelite.api.InventoryID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
@@ -81,6 +82,9 @@ public class BronzemanPlugin extends Plugin {
     /** Unlocks all new items that are currently not unlocked **/
     @Subscribe
     public void onItemContainerChanged(ItemContainerChanged e) {
+        if (e.getItemContainer() != client.getItemContainer(InventoryID.INVENTORY)) {
+            return;
+        }
         for (Item i : e.getItemContainer().getItems()) {
             if (i == null) continue;
             if (i.getId() <= 1) continue;
